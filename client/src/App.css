@@ -1,6 +1,12 @@
 .App {
-  text-align: center;
-}
+	text-align: center;
+	background-color: #eaeeef;
+  
+	--bg-2: #9acccd;
+	--bg-1: #99CBCC;
+	--bg-3: #67999a;
+	--main-bg: #f0f0f0;
+  }
 
 .App-logo {
   height: 40vmin;
@@ -24,15 +30,16 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.fancy-textblock {
+    display: inline-block;
+    box-sizing: content-box;
+    cursor: pointer;
+    padding: 5px 10px;
+    border: solid 1px black;
+    border-radius: 3px;
+    font: normal 16px/normal Verdana, Geneva, sans-serif;
+    color: rgba(0,0,0,1);
+    text-overflow: clip;
+    background: #9acccd;
+    text-shadow: -1px -1px 0 rgba(15,73,168,0) ;
   }
-  to {
-    transform: rotate(360deg);
-  }
-}
