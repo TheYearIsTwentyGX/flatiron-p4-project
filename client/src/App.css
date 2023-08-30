@@ -1,45 +1,73 @@
 .App {
 	text-align: center;
-	background-color: #eaeeef;
-  
-	--bg-2: #9acccd;
-	--bg-1: #99CBCC;
-	--bg-3: #67999a;
-	--main-bg: #f0f0f0;
-  }
+	background-color: #263a4c;
+
+	--bg-2: #263a4c;
+	--bg-1: #4B7395;
+	--bg-3: #2f4253;
+	--main-bg: #263a4c;
+	--gray-accent: #2f4253;
+	--accent-bg: #863423;
+}
 
 .App-logo {
-  height: 40vmin;
-  pointer-events: none;
+	height: 40vmin;
+	pointer-events: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+	.App-logo {
+		animation: App-logo-spin infinite 20s linear;
+	}
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+	background-color: #282c34;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font-size: calc(10px + 2vmin);
+	color: white;
 }
 
 .fancy-textblock {
-    display: inline-block;
-    box-sizing: content-box;
-    cursor: pointer;
-    padding: 5px 10px;
-    border: solid 1px black;
-    border-radius: 3px;
-    font: normal 16px/normal Verdana, Geneva, sans-serif;
-    color: rgba(0,0,0,1);
-    text-overflow: clip;
-    background: #9acccd;
-    text-shadow: -1px -1px 0 rgba(15,73,168,0) ;
-  }
+	display: inline-block;
+	box-sizing: content-box;
+	cursor: pointer;
+	padding: 5px 10px;
+	border: solid 1px black;
+	border-radius: 3px;
+	font: normal 16px/normal Verdana, Geneva, sans-serif;
+	color: rgba(0, 0, 0, 1);
+	text-overflow: clip;
+	background: var(--gray-accent);
+	text-shadow: -1px -1px 0 rgba(15, 73, 168, 0);
+}
+
+.fancy-textblock:focus {
+	outline: black solid 1px;
+}
+
+.general-flex {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-evenly;
+	align-items: top;
+}
+
+.upright-flex {
+	display: flex;
+	flex-flow: column nowrap;
+	align-items: center;
+}
+
+.main-content {
+	width: 85%;
+	background-color: var(--main-bg);
+}
+
+.blocking-div {
+	display: block;
+}
