@@ -1,18 +1,36 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Card from '../Card';
 import './Login.css';
 import '../../App.css'
+import { useHistory } from 'react-router-dom';
+import { UserContext } from '../Context/UserContext';
 
 export default function Login() {
 	const [formValues, setFormValues] = useState({});
-
+	const { url, user, setUser } = useContext(UserContext);
+	const history = useHistory();
+	const [errors, setErrors] = useState([]);
 	function textChanged(e) {
 		setFormValues({ ...formValues, [e.target.name]: e.target.value });
 	}
 
 	function handleSubmit(e) {
 		e.preventDefault();
-		console.log(formValues);
+		fetch(`${url}/login`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(formValues)
+		}).then(res => res.json())
+			.then(data => {
+				if (Array.isArray(data) || data.hasOwnProperty('errors')) {
+					setErrors(data.errors ?? data);
+				} else {
+					setUser(data);
+					history.push('/albums');
+				}
+			})
 	}
 
 	return (
@@ -20,6 +38,7 @@ export default function Login() {
 			<Card title={"Welcome Back!"}>
 				<div className='upright-flex'>
 					<h2>Please log in to your account:</h2>
+					{Array.isArray(errors) && errors.length > 0 ? errors.map((error, i) => <p className='error' key={i}>{error}</p>) : null}
 					<form onSubmit={handleSubmit} className='login-form'>
 						<label htmlFor='username'>Username</label>
 						<input onChange={textChanged} className='fancy-textblock' type='text' name='Username' id='username' />

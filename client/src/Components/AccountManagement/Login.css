@@ -25,6 +25,7 @@
 .upright-flex label,
 .upright-flex input {
 	display: block;
+	width: auto;
 }
 
 .login-root {
@@ -33,4 +34,9 @@
 
 .upright-flex label {
 	padding: 15px;
+}
+
+.error {
+	color: #ff4444;
+	font-weight: 500;
 }
