@@ -1,0 +1,36 @@
+.login-root {
+	position: relative;
+	top: 0;
+	display: block;
+	margin: 0;
+	margin-left: auto;
+	font-size: large;
+}
+
+#login-submit {
+	margin-top: 25px;
+	color: white;
+	background: var(--accent-bg);
+	box-shadow: 3px 5px 5px 2px rgba(0, 0, 0, 0.6);
+	border: none;
+	padding: 5px 20px;
+	border-radius: 5px;
+	scale: 1.3;
+}
+
+.upright-flex input {
+	box-shadow: 3px 5px 5px 2px rgba(0, 0, 0, 0.6);
+}
+
+.upright-flex label,
+.upright-flex input {
+	display: block;
+}
+
+.login-root {
+	color: lightgray;
+}
+
+.upright-flex label {
+	padding: 15px;
+}
