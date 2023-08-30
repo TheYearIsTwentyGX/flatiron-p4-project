@@ -10,13 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_08_30_000105) do
+ActiveRecord::Schema.define(version: 2023_08_30_190536) do
 
   create_table "albums", force: :cascade do |t|
     t.string "Artist"
     t.integer "TrackCount"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "AlbumArt"
+    t.string "Title"
   end
 
   create_table "reviews", force: :cascade do |t|

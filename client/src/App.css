@@ -39,15 +39,11 @@
 	padding: 5px 10px;
 	border: solid 1px black;
 	border-radius: 3px;
-	font: normal 16px/normal Verdana, Geneva, sans-serif;
+	font: normal 18px/normal Verdana, Geneva, sans-serif;
 	color: rgba(0, 0, 0, 1);
 	text-overflow: clip;
 	background: var(--gray-accent);
 	text-shadow: -1px -1px 0 rgba(15, 73, 168, 0);
-}
-
-.fancy-textblock:focus {
-	outline: black solid 1px;
 }
 
 .general-flex {
