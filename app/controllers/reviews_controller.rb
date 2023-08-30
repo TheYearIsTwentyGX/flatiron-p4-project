@@ -15,12 +15,14 @@ class ReviewsController < ApplicationController
 
   # POST /reviews
   def create
+	review_params[:user_id] ||= session[:user_id]
+	puts review_params[:user_id]
     @review = Review.new(review_params)
 
     if @review.save
-      render json: @review, status: :created, location: @review
+      render json: @review, status: :created
     else
-      render json: @review.errors, status: :unprocessable_entity
+      render json: @review.errors.full_messages, status: :unprocessable_entity
     end
   end
 
@@ -46,6 +48,6 @@ class ReviewsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def review_params
-      params.fetch(:review, {})
+	  params.require(:review).permit(:Title, :Body, :user_id, :album_id)
     end
 end
