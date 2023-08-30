@@ -4,6 +4,8 @@ import Sidebar from './Components/Sidebar';
 import Login from './Components/AccountManagement/Login';
 import Signup from './Components/AccountManagement/Signup';
 import { UserProvider } from './Components/Context/UserContext';
+import Albums from './Components/AlbumsPage/Albums';
+import { ItemProvider } from './Components/Context/ItemContext';
 
 function App() {
 	return (
@@ -20,6 +22,9 @@ function App() {
 									<Login />
 								</Route>
 								<Route path="/signup" component={Signup} />
+								<ItemProvider>
+									<Route path="/albums" component={Albums} />
+								</ItemProvider>
 							</Switch>
 						</div>
 					</div>

@@ -1,0 +1,48 @@
+.artist-text {
+	font-size: 1.5rem;
+	font-style: italic;
+	color: var(--accent-bg);
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+.count-text {
+	font-size: 1.25rem;
+}
+
+.review-button {
+	border: 1px solid black;
+	outline: none;
+	border-radius: 0.6rem;
+	padding: 10px 40px;
+	background: var(--accent-bg);
+	font-size: 0.95rem;
+	color: white;
+}
+
+.card-contents {
+	color: white;
+}
+
+.hidden {
+	display: none;
+}
+
+.card-contents .fancy-textblock {
+	background-color: var(--bg-3);
+	color: white;
+}
+
+.review-form>form>div>label {
+	display: block;
+}
+
+.review-form>form>div>input {
+	margin: 10px;
+	color: white;
+}
+
+
+.cancel-button {
+	background: var(--bg-3);
+}
