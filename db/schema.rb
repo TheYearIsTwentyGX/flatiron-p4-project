@@ -19,8 +19,15 @@ ActiveRecord::Schema.define(version: 2023_08_30_000105) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-# Could not dump table "reviews" because of following StandardError
-#   Unknown type 'reference' for column 'user'
+  create_table "reviews", force: :cascade do |t|
+    t.float "Score"
+    t.string "Title"
+    t.text "Body"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.integer "album_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "Username"

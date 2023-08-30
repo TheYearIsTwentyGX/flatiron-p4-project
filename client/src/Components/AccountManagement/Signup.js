@@ -3,7 +3,7 @@ import Card from '../Card';
 import './Login.css';
 import '../../App.css'
 
-export default function Login() {
+export default function Signup() {
 	const [formValues, setFormValues] = useState({});
 
 	function textChanged(e) {
@@ -17,14 +17,16 @@ export default function Login() {
 
 	return (
 		<div className='login-root'>
-			<Card title={"Welcome Back!"}>
+			<Card title={"Welcome!"}>
 				<div className='upright-flex'>
-					<h2>Please log in to your account:</h2>
+					<h2>Please create an account:</h2>
 					<form onSubmit={handleSubmit} className='login-form'>
 						<label htmlFor='username'>Username</label>
 						<input onChange={textChanged} className='fancy-textblock' type='text' name='Username' id='username' />
 						<label htmlFor='password'>Password</label>
-						<input onChange={textChanged} className='fancy-textblock' type='Password' name='Password' id='password' />
+						<input onChange={textChanged} className='fancy-textblock' type='Password' name='password' id='password' />
+						<label htmlFor='password_confirmation'>Confirm Password</label>
+						<input onChange={textChanged} className='fancy-textblock' type='Password' name='password_confirmation' id='password_confirmation' />
 						<button id='login-submit' type='submit'>Login</button>
 					</form>
 				</div>

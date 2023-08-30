@@ -1,6 +1,6 @@
 class AddReferencesToReviews < ActiveRecord::Migration[6.1]
   def change
-    add_reference :reviews, :user, null: false, foreign_key: true
-    add_reference :reviews, :album, null: false, foreign_key: true
+    add_column :reviews, :user_id, :integer
+    add_column :reviews, :album_id, :integer
   end
 end
