@@ -38,5 +38,7 @@
 
 .error {
 	color: #ff4444;
-	font-weight: 500;
+	font-size: 1.25em;
+	margin-top: 0;
+	font-weight: 600;
 }
