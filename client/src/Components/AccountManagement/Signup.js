@@ -16,7 +16,7 @@ export default function Signup() {
 	function handleSubmit(e) {
 		e.preventDefault();
 		console.log(formValues);
-		fetch(`${url}/signup`, {
+		fetch(`/signup`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'

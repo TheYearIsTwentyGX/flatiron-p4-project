@@ -4,7 +4,7 @@ const UserContext = createContext();
 
 export function UserProvider({ children }) {
 	const [user, setUser] = useState(null);
-	const [url] = useState('http://localhost:3001');
+	const [url] = useState('');
 
 
 	return (<UserContext.Provider value={{ user, setUser, url }}>{children}</UserContext.Provider>);

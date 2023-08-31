@@ -14,7 +14,7 @@ export default function Album({ album }) {
 
 	function postReview(e) {
 		e.preventDefault();
-		fetch(`${url}/reviews`, {
+		fetch(`/reviews`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json"

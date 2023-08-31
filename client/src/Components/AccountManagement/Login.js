@@ -16,7 +16,7 @@ export default function Login() {
 
 	function handleSubmit(e) {
 		e.preventDefault();
-		fetch(`${url}/login`, {
+		fetch(`/login`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
@@ -27,7 +27,7 @@ export default function Login() {
 				if (Array.isArray(data) || data.hasOwnProperty('errors')) {
 					setErrors(data.errors ?? data);
 				} else {
-					setUser(data);
+					setUser(data.user);
 					history.push('/albums');
 				}
 			})

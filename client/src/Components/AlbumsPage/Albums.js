@@ -16,8 +16,7 @@ export default function Albums() {
 			return;
 		}
 
-		fetch(`${url}/albums`)
-			.then((res) => res.json())
+		fetch(`/albums`)
 			.then((data) => {
 				setAlbums(data);
 				console.log(data);
