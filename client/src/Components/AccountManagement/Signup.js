@@ -2,12 +2,14 @@ import React, { useState, useContext } from 'react';
 import Card from '../Card';
 import './Login.css';
 import '../../App.css'
+import { useHistory } from 'react-router-dom';
 import { UserContext } from '../Context/UserContext';
 
 export default function Signup() {
 	const [formValues, setFormValues] = useState({});
 	const { setUser, url } = useContext(UserContext);
 	const [errors, setErrors] = useState([]);
+	const history = useHistory();
 
 	function textChanged(e) {
 		setFormValues({ ...formValues, [e.target.name]: e.target.value });
@@ -30,6 +32,7 @@ export default function Signup() {
 				}
 				console.log(data);
 				setUser(data);
+				history.push('/albums');
 			})
 	}
 
