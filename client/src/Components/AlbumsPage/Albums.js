@@ -17,7 +17,16 @@ export default function Albums() {
 		}
 
 		fetch(`/albums`)
+			.then((res) => {
+				if (res.ok) {
+					return res.json();
+				}
+				return null;
+			})
 			.then((data) => {
+				if (data === null) {
+					return;
+				}
 				setAlbums(data);
 				console.log(data);
 			})
