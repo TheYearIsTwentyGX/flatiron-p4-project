@@ -15,8 +15,8 @@ class ReviewsController < ApplicationController
 
   # POST /reviews
   def create
-	review_params[:user_id] ||= session[:user_id]
-	puts review_params[:user_id]
+    review_params[:user_id] ||= session[:user_id]
+    puts review_params[:user_id]
     @review = Review.new(review_params)
 
     if @review.save
@@ -28,26 +28,33 @@ class ReviewsController < ApplicationController
 
   # PATCH/PUT /reviews/1
   def update
-    if @review.update(review_params)
+    if @review.allowed_to_edit?(session[:user_id])
+      @review.update(review_params)
       render json: @review
     else
-      render json: @review.errors, status: :unprocessable_entity
+      render json: {errors: @review.errors.full_messages}, status: :unprocessable_entity
     end
   end
 
   # DELETE /reviews/1
   def destroy
-    @review.destroy
+    @review.destroy if @review.allowed_to_edit?(session[:user_id])
+    if @review.errors.empty?
+      render nothing: true, status: :no_content
+    else
+      render json: {errors: @review.errors.full_messages}, status: :unauthorized
+    end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_review
-      @review = Review.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def review_params
-	  params.require(:review).permit(:Title, :Body, :user_id, :album_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_review
+    @review = Review.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def review_params
+    params.require(:review).permit(:Title, :Body, :user_id, :album_id)
+  end
 end
