@@ -1,11 +1,11 @@
 class AlbumsController < ApplicationController
   before_action :set_album, only: [:show, :update, :destroy]
-
+  skip_before_action :authorize, only: [:index, :show]
   # GET /albums
   def index
     @albums = Album.all
 
-    render json: @albums
+    render json: @albums, each_serializer: AlbumSerializer
   end
 
   # GET /albums/1
@@ -39,13 +39,14 @@ class AlbumsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_album
-      @album = Album.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def album_params
-      params.fetch(:album, {})
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_album
+    @album = Album.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def album_params
+    params.fetch(:album, {})
+  end
 end
