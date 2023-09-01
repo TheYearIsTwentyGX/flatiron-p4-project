@@ -18,7 +18,7 @@ class AlbumsController < ApplicationController
     @album = Album.new(album_params)
 
     if @album.save
-      render json: @album, status: :created
+      render json: @album, status: :created, serializer: AlbumSerializer
     else
       render json: @album.errors, status: :unprocessable_entity
     end
@@ -29,7 +29,7 @@ class AlbumsController < ApplicationController
     if @album.update(album_params)
       render json: @album
     else
-      render json: @album.errors, status: :unprocessable_entity
+      render json: {errors: @album.errors.full_messages}, status: :unprocessable_entity
     end
   end
 
@@ -47,6 +47,6 @@ class AlbumsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def album_params
-    params.fetch(:album, {})
+    params.require(:album).permit(:Artist, :Title, :TrackCount, :AlbumArt)
   end
 end

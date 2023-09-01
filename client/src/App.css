@@ -45,7 +45,7 @@
 .fancy-textblock {
 	display: inline-block;
 	box-sizing: content-box;
-	cursor: pointer;
+	cursor: text;
 	padding: 5px 10px;
 	border: solid 1px black;
 	border-radius: 3px;
@@ -63,6 +63,10 @@
 	align-items: top;
 }
 
+.align-top {
+	align-items: flex-start;
+}
+
 .center-row-flex {
 	display: flex;
 	flex-flow: row nowrap;
@@ -70,10 +74,21 @@
 	align-items: center;
 }
 
+.vTop-hCenter-flex {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: start;
+	align-items: flex-start;
+}
+
 .upright-flex {
 	display: flex;
 	flex-flow: column nowrap;
 	align-items: center;
+}
+
+.spaced-image {
+	margin: 20px;
 }
 
 .main-content {
@@ -83,4 +98,17 @@
 
 .blocking-div {
 	display: block;
+}
+
+.standard-button {
+	margin-top: 15px;
+	margin-bottom: 25px;
+	color: white;
+	background: var(--accent-bg);
+	box-shadow: 3px 5px 5px 2px rgba(0, 0, 0, 0.6);
+	border: none;
+	padding: 5px 20px;
+	border-radius: 5px;
+	cursor: pointer;
+	scale: 1.3;
 }

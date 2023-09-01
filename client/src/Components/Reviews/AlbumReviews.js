@@ -35,7 +35,7 @@ export default function AlbumReviews() {
 					<h1 className="album-title">{album.Title}</h1>
 				</div>
 				<div className="general-flex">
-					<img src={album.AlbumArt} alt={album.Title} />
+					<img width={200} src={album.AlbumArt} alt={album.Title} />
 					<div className="upright-flex vertical-center">
 						<h3 className="artist-text-reviews" >{album.Artist}</h3>
 						<h3>{album.TrackCount + " tracks"}</h3>
