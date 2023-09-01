@@ -1,6 +1,5 @@
 import React, { useContext, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import Card from "../Card";
 import { ItemContext } from "../Context/ItemContext";
 import Album from "./Album";
 import { UserContext } from "../Context/UserContext";
@@ -34,6 +33,7 @@ export default function Albums() {
 	return (
 		<div>
 			<h1>Albums</h1>
+			<button onClick={(e) => history.push("/albums/new")} className="standard-button">Add a new Album</button>
 			<div className="general-flex">
 				{albums.map((album) => (<Album key={album.id} album={album} />))}
 			</div>
