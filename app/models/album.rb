@@ -1,8 +1,9 @@
 class Album < ApplicationRecord
-	validates :Title, presence: true, uniqueness: true
-	validates :TrackCount, presence: true, numericality: { only_integer: true }
-	validates :Artist, presence: true
+  validates :Title, presence: true, uniqueness: true
+  validates :TrackCount, presence: true, numericality: {only_integer: true}
+  validates :Artist, presence: true
+  validates :AlbumArt, presence: true
 
-	has_many :reviews
-	has_many :reviewers, through: :reviews, source: :user
+  has_many :reviews
+  has_many :reviewers, through: :reviews, source: :user
 end
