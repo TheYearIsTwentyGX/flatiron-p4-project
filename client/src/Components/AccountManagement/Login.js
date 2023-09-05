@@ -24,6 +24,7 @@ export default function Login() {
 			body: JSON.stringify(formValues)
 		}).then(res => res.json())
 			.then(data => {
+				console.log(data);
 				if (Array.isArray(data) || data.hasOwnProperty('errors')) {
 					setErrors(data.errors ?? data);
 				} else {
@@ -38,7 +39,14 @@ export default function Login() {
 			<Card title={"Welcome Back!"}>
 				<div className='upright-flex'>
 					<h2>Please log in to your account:</h2>
-					{Array.isArray(errors) && errors.length > 0 ? errors.map((error, i) => <p className='error' key={i}>{error}</p>) : null}
+					{
+						errors.length > 0
+							? <div>
+								<p className="error">{"Error(s) have occurred:"}</p>
+								{errors.map((error) => <p className="error" key={error}>{error}</p>)}
+							</div>
+							: null
+					}
 					<form onSubmit={handleSubmit} className='login-form'>
 						<label htmlFor='username'>Username</label>
 						<input onChange={textChanged} className='fancy-textblock' type='text' name='Username' id='username' />
