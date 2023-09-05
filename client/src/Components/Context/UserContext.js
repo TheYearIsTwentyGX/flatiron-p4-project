@@ -17,9 +17,8 @@ export function UserProvider({ children }) {
 			}).then(data => {
 				if (data !== null) {
 					setUser(data.user);
-					retVal = true;
+					retVal = data.user;
 				}
-				console.log("Session check: ", retVal);
 			})
 		return retVal;
 	}

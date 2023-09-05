@@ -9,6 +9,7 @@ import { ItemProvider } from './Components/Context/ItemContext';
 import AlbumReviews from './Components/Reviews/AlbumReviews';
 import Logout from './Components/AccountManagement/Logout';
 import AlbumForm from './Components/AlbumsPage/AlbumForm';
+import MyReviews from './Components/Reviews/MyReviews';
 
 function App() {
 	return (
@@ -30,6 +31,7 @@ function App() {
 									<Route exact path="/albums/new" component={AlbumForm} />
 									<Route exact path="/albums/:id" component={AlbumReviews} />
 									<Route exact path="/albums" component={Albums} />
+									<Route exact path="/my-reviews" component={MyReviews} />
 									<Route path="*">
 										<Redirect to="/albums" />
 									</Route>

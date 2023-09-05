@@ -7,9 +7,9 @@ export default function Sidebar() {
 	const history = useHistory();
 	const { user, checkSession } = useContext(UserContext);
 
-	useEffect(() => {
+	useEffect(async () => {
 		if (user === null) {
-			const sessionStatus = checkSession();
+			const sessionStatus = await checkSession();
 			console.log("Session status: ", sessionStatus)
 			if (sessionStatus)
 				return;
@@ -28,8 +28,8 @@ export default function Sidebar() {
 		<div className="sidebar">
 			<NavLink to="/home" activeClassName="active" className="sidebar-item">Home</NavLink>
 			{isLoggedIn() ? null : <NavLink to="/login" activeClassName="active" className="sidebar-item">Sign In</NavLink>}
+			{isLoggedIn() ? <NavLink to="/my-reviews" activeClassName="active" className="sidebar-item">My Reviews</NavLink> : null}
 			<NavLink to="/albums" activeClassName="active" className="sidebar-item">Albums</NavLink>
-			<NavLink to="/reviews" activeClassName="active" className="sidebar-item">Reviews</NavLink>
 			{isLoggedIn() ? null : <NavLink to="/signup" activeClassName="active" className="sidebar-item">Sign Up</NavLink>}
 			{isLoggedIn() ? <NavLink to="/logout" activeClassName="active" className="sidebar-item">Logout</NavLink> : null}
 		</div>

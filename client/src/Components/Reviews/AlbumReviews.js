@@ -9,7 +9,7 @@ import "./AlbumReviews.css";
 
 export default function AlbumReviews() {
 	const { albums, setAlbums } = useContext(ItemContext);
-	const { user, url } = useContext(UserContext);
+	const { user, checkSession } = useContext(UserContext);
 	const history = useHistory();
 	const location = useLocation();
 	const { id } = useParams();
@@ -18,7 +18,14 @@ export default function AlbumReviews() {
 		return obj !== null && obj !== undefined;
 	}
 
-	useEffect(() => {
+	useEffect(async () => {
+		if (user === null) {
+			if (!(await checkSession())) {
+				history.push('/login');
+				return;
+			}
+		}
+
 		fetch("/albums/" + id)
 			.then(res => res.json())
 			.then(data => {

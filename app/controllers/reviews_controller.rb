@@ -36,6 +36,21 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def user_reviews
+    @reviews = User.find(params[:id]).reviews
+    if @reviews.count < 1
+      render json: {errors: ["No reviews found"]}, status: :not_found
+      return
+    end
+    @reviews = @reviews.map do |review|
+      {
+        album: review.album,
+        review: review
+      }
+    end
+    render json: @reviews
+  end
+
   # DELETE /reviews/1
   def destroy
     @review.destroy if @review.allowed_to_edit?(session[:user_id])

@@ -9,8 +9,8 @@ export default function Albums() {
 	const { setUser, user, checkSession } = useContext(UserContext);
 	const history = useHistory();
 
-	useEffect(() => {
-		if (user === null && !checkSession()) {
+	useEffect(async () => {
+		if (user === null && !(await checkSession())) {
 			history.push("/login");
 			return;
 		}
