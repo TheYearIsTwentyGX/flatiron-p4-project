@@ -6,11 +6,11 @@ import { UserContext } from "../Context/UserContext";
 
 export default function Albums() {
 	const { albums, setAlbums } = useContext(ItemContext);
-	const { user, url } = useContext(UserContext);
+	const { setUser, user, checkSession } = useContext(UserContext);
 	const history = useHistory();
 
 	useEffect(() => {
-		if (user === null) {
+		if (user === null && !checkSession()) {
 			history.push("/login");
 			return;
 		}

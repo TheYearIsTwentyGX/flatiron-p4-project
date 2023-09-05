@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom";
 import { ItemContext } from "../Context/ItemContext";
 
 export default function Album({ album }) {
-	const { user, url } = useContext(UserContext);
+	const { user } = useContext(UserContext);
 	const { albums, setAlbums } = useContext(ItemContext);
 	const [composing, setComposing] = useState(false);
 	album.HasReviewed = album.Reviews.some((review) => review.user_id === user.id);

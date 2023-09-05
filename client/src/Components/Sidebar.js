@@ -1,13 +1,24 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import './Sidebar.css';
 import { useHistory, NavLink } from 'react-router-dom';
 import { UserContext } from './Context/UserContext';
 
 export default function Sidebar() {
 	const history = useHistory();
-	const { user } = useContext(UserContext);
+	const { user, checkSession } = useContext(UserContext);
 
-	console.log(user)
+	useEffect(() => {
+		if (user === null) {
+			const sessionStatus = checkSession();
+			console.log("Session status: ", sessionStatus)
+			if (sessionStatus)
+				return;
+			else {
+				console.log("pushing to login from Sidebar")
+				history.push('/login');
+			}
+		}
+	}, []);
 
 	function isLoggedIn() {
 		return user !== null && user?.id !== undefined;

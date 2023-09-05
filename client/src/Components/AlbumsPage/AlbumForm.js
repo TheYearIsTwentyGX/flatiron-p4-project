@@ -6,11 +6,11 @@ import { useHistory } from "react-router-dom";
 export default function AlbumForm() {
 	const [formValues, setFormValues] = useState({});
 	const [errors, setErrors] = useState([]);
-	const { user } = useContext(UserContext);
+	const { user, checkSession } = useContext(UserContext);
 	const history = useHistory();
 
 	useEffect(() => {
-		if (user === null || user.id === undefined) {
+		if (user === null && !checkSession()) {
 			history.push("/login");
 			return;
 		}

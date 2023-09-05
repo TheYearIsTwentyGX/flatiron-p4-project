@@ -3,7 +3,11 @@ class SessionsController < ApplicationController
   skip_before_action :authorize, only: [:create]
 
   def index
-    render json: {session: session, cookies: cookies.to_hash}
+    if current_user
+      render json: {user: current_user}
+    else
+      render json: {errors: ["Not logged in"]}, status: :unauthorized
+    end
   end
 
   def create
