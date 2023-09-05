@@ -23,9 +23,10 @@ export default function Album({ album }) {
 	}
 
 	function postReview(e) {
+		const postOrPatch = album.HasReviewed ? [album.Reviews.find(x => x.user_id === user.id).id, "PATCH"] : ["", "POST"];
 		e.preventDefault();
-		fetch(`/reviews`, {
-			method: "POST",
+		fetch(`/reviews/${postOrPatch[0]}`, {
+			method: postOrPatch[1],
 			credentials: "same-origin",
 			headers: {
 				"Content-Type": "application/json"
@@ -39,9 +40,14 @@ export default function Album({ album }) {
 					return;
 				}
 				console.log("Data: ", data);
+				if (postOrPatch[1] === "PATCH")
+					album.Reviews = album.Reviews.filter(x => x.user_id !== user.id);
+				else {
+					album.ReviewCount++;
+					album.HasReviewed = true;
+				}
 				album.Reviews.push(data);
-				album.ReviewCount++;
-				album.HasReviewed = true;
+
 				setAlbums(albums.map(x => x.id == album.id ? album : x));
 				setComposing(false);
 				history.push(`/albums/${album.id}`);
