@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
       cookies.signed[:user_id] = user.id
       render json: {user: user}, status: :created
     else
-      throw ActiveRecord::RecordNotFound
+      render_wrong_credentials
     end
   end
 
@@ -27,6 +27,6 @@ class SessionsController < ApplicationController
   private
 
   def render_wrong_credentials
-    render json: {error: "Could not find a user with that username and password combination"}, status: :unauthorized
+    render json: {errors: ["Could not find a user with that username and password combination"]}, status: :unauthorized
   end
 end
