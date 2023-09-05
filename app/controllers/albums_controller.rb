@@ -20,7 +20,7 @@ class AlbumsController < ApplicationController
     if @album.save
       render json: @album, status: :created, serializer: AlbumSerializer
     else
-      render json: @album.errors, status: :unprocessable_entity
+      render json: @album.errors.full_messages, status: :unprocessable_entity
     end
   end
 
